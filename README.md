@@ -58,3 +58,47 @@ for k in range(0, 63):
     plt.show()
 ```
 ![image](https://github.com/Guo-my/SSDPL/blob/main/Figure/waveforms.png)
+
+# How to Test Model Generalization Using Japanese Strong Motion Data (K-NET)？
+Since the STEAD training data does not encompass earthquake data from Japan, utilizing strong motion data from K-Net to evaluate the performance of the network model is a good choice. You can access K-NET data [here](https://www.kyoshin.bosai.go.jp/).
+This code shows a function how to read the K-Net data.
+```python
+def read_knet_ascii(file_path):
+    data = {}
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+
+        metadata = {}
+        for line in lines[:17]:
+            parts = line.strip().split()
+            if len(parts) >= 4:
+                metadata[parts[0] + parts[1]] = parts[2] + parts[3]
+            if len(parts) == 3:
+                metadata[parts[0] + parts[1]] = parts[-1]
+            if len(parts) == 2:
+                metadata[parts[0]] = parts[-1]
+        data['metadata'] = metadata
+
+        scale_line = lines[13]
+        parts = scale_line.strip().split()
+        numerator, denominator = parts[-1].split('/')
+        numerator = numerator.replace('(gal)', '')
+
+        numerator = float(numerator)
+        denominator = float(denominator)
+        proportion = numerator / denominator
+
+        waveform_data = []
+        for line in lines[17:]:
+            parts = line.strip().split()
+            if parts:
+                try:
+                    for part in parts:
+                        waveform_data.append((float(part)*proportion))
+                except ValueError:
+                    continue
+        data['waveform'] = waveform_data
+
+    return data
+```
+![image](https://github.com/user-attachments/assets/f37a7836-54aa-4506-a0af-9108d09b8570)

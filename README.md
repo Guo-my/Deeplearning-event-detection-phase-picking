@@ -1,10 +1,17 @@
 # SSDPL:A completely deep neural network-based method for single-station seismic detection, phase picking, and epicenter location
+## This method utilizes a neural network model for the detection and localization of seismic events from a single station. 
+You can leverage our pre-trained models for event detection and phase picking on actual seismic records. Additionally, we offer a single-station location method. Our pre-trained models demonstrate strong performance, particularly for events with smaller magnitudes. Furthermore, you have the option to retrain these models with your own data to better align with your specific task requirements.
 > [!NOTE]
+>The code will be continuously maintained and updated. If you encounter any issues, please contact me.
+> 
 > The code is built with PyTorch.
 > 
 > Please install the necessary Python Package before executing the code.
-# How to check the seismic waveforms and labels of trainning sets
-```
+# How to check the seismic waveforms and labels of trainning sets？
+This is a code example demonstrating how to plot waveforms from an augmented training dataset.
+
+You can download the [STanford EArthquake Dataset (STEAD)](https://github.com/smousavi05/STEAD?tab=readme-ov-file) here!
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 from Read_data import read
@@ -17,9 +24,6 @@ training_data = read(input_hdf5=file_name, input_csv=csv_file, batch_size=128, a
 batch_x, batch_d, batch_p, batch_s, batch_dist, batch_p_travel, batch_deep, batch_azi = training_data.__getitem__(1)
 
 for k in range(0, 63):
-    print("-------------------")
-    print(batch_dist[k, 0], batch_azi[k, :])
-    print(np.degrees(np.arctan2(batch_azi[k, 1], batch_azi[k, 0])))
     fig, axs = plt.subplots(4, 1, figsize=(10, 6))
     fig.subplots_adjust(hspace=0.1)
 
@@ -53,3 +57,4 @@ for k in range(0, 63):
 
     plt.show()
 ```
+![image](https://github.com/Guo-my/SSDPL/blob/main/Figure/waveforms.png)

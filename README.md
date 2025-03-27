@@ -10,7 +10,7 @@ You can leverage our pre-trained models for event detection and phase picking on
 # How to check the seismic waveforms and labels of trainning sets？
 This is a code example demonstrating how to plot waveforms from an augmented training dataset.
 
-You can download the [STanford EArthquake Dataset (STEAD)](https://github.com/smousavi05/STEAD?tab=readme-ov-file) here!
+You can download the [STanford EArthquake Dataset (STEAD) here!](https://github.com/smousavi05/STEAD?tab=readme-ov-file)
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -60,7 +60,7 @@ for k in range(0, 63):
 ![image](https://github.com/Guo-my/SSDPL/blob/main/Figure/waveforms.png)
 
 # How to Test Model Generalization Using Japanese Strong Motion Data (K-NET)？
-Since the STEAD training data does not encompass earthquake data from Japan, utilizing strong motion data from K-Net to evaluate the performance of the network model is a good choice. You can access K-NET data [here](https://www.kyoshin.bosai.go.jp/).
+Since the STEAD training data does not encompass earthquake data from Japan, utilizing strong motion data from K-Net to evaluate the performance of the network model is a good choice. You can access [K-NET data here](https://www.kyoshin.bosai.go.jp/).
 This code shows a function how to read the K-Net data.
 ```python
 def read_knet_ascii(file_path):

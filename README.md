@@ -1,6 +1,6 @@
-# SSDPL: A completely deep neural network-based method for single-station seismic detection, phase picking, and epicenter location
-## This method utilizes a neural network model for the detection and localization of seismic events from a single station. 
-You can leverage our pre-trained models for event detection and phase picking on actual seismic records. Additionally, we offer a single-station location method. Our pre-trained models demonstrate strong performance, particularly for events with smaller magnitudes. Furthermore, you have the option to retrain these models with your own data to better align with your specific task requirements.
+# A Single-Station Earthquake Detection and Phase-Picking Network Based on a Multiple Attention Mechanism
+## This method utilizes a neural network model for the detection and phase-picking of seismic events from a single station. 
+You can leverage our pre-trained models for event detection and phase picking on actual seismic records. Our pre-trained models performance well, particularly for events with smaller magnitudes. Furthermore, you have the option to retrain these models with your own data to better align with your specific task requirements.
 > [!NOTE]
 >The code will be continuously maintained and updated. If you encounter any issues, please contact me📧.
 > 
